@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{week1}
+    \title{week2}
     
     
     
@@ -280,264 +280,500 @@
     
 
     
-    \subsection{Overview of Visualization}\label{overview-of-visualization}
+    \subsection{Additional Readings and
+Resources}\label{additional-readings-and-resources}
+
+Design:
+
+\begin{itemize}
+\tightlist
+\item
+  The Visual Display of Quantitative Information by Edward Tufte
+\item
+  Envisioning Information by Edward Tufte
+\item
+  Visual Explanations: Images and Quantities, Evidence and Narrative by
+  Edward Tufte
+\end{itemize}
+
+Color:
+
+\begin{itemize}
+\tightlist
+\item
+  Information Visualization: Perception for Design by Colin Ware
+\end{itemize}
+
+    \subsection{Key phrases and Concepts}\label{key-phrases-and-concepts}
+
+\begin{itemize}
+\tightlist
+\item
+  Data variables: nominal, ordinal, and quantitative; discrete v.
+  continuous; dependent v. independent
+\item
+  The perceptual accuracy of how different chart elements represent data
+  variables
+\item
+  How glyphs represent multiple dimensions of individual data items, how
+  parallel coordinates plot data over many dimensions, and how
+  streamgraphs improve on stacked bar charts
+\item
+  Chartjunk, the data-ink ratio, and other design rules
+\item
+  Hue, saturation, value, and other ways of thinking about color
+\end{itemize}
+
+    \subsection{Introduction}\label{introduction}
+
+We can use \href{https://www.tableau.com/}{Tableau} to visualize dan
+analyze data. Tableau has easy navigation, for example, we can easily
+found a "Show More" button to choose proper graph to visualize
+correspondent data.
+
+    \subsection{Data Visualization
+Framework}\label{data-visualization-framework}
+
+There is a framework to help us and simplify our understanding of how
+data visualization work. The \textbf{data visualization framework} can
+be seen in an image below:
+
+\begin{figure}
+\centering
+\includegraphics{images/data-visualization-framework.png}
+\caption{Data visualization framework}
+\end{figure}
+
+\textbf{Data Layer} contains two entities that are data sources and data
+collection. Before collecting all data, we need to do preprocessing that
+ensuring each data imported in the proper format. After data being
+imported, we need to ensure that all data stored in the best possible
+structure. In the case of a database, we can maintenance relation
+between data as database indexes, so will increase retrieval time. After
+data storing problem being solved, we can do such optimization to
+enhance our storage. By doing data analysis, we can decide the quality
+of data we have collected. The task of data analysis included:
+inspecting, cleansing, and transforming. The goal of data analysis is
+reduced noise in our data collection, by removing or transforming.
+Another crucial optimization is data aggregation which has a significant
+impact on retrieval performance of our data collection. The task of data
+aggregation included: classification, clustering, etc.
+
+\textbf{Mapping Layer} is a complicated layer which has robust
+implementation of linear algebra and computer graphics algorithms. In
+this layer, we working on how to associating appropriate geometry with
+data channels. For example, in the case to represent clusters of data,
+we need to associate size of cluster into area of circle.
+
+\textbf{Graphics layer} has a robust implementation of computer graphics
+algorithms and user interaction. The main objective of this layer is to
+produce geometry calculation from mapping layer into a displayable image
+on the computer screen. In the case of interactive visualization, we
+need to ensure that any given input processed correctly to produce
+expected effect on graphical representation of our data.
+
+    \subsection{Data Types}\label{data-types}
+
+There are four types of discrete data:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \emph{Mathematical Visualization}: Based on mathematical equations.
-  This visualization has been interested by mathematician since 1900,
-  but they did not really understand about the dynamic of equation. We
-  used computer to show or simulation the dynamic of mathematic
-  equation. For example, we can plot a complex equation in very huge
-  dimensions, then evaluate it into the smaller or higher dense to
-  understand what visualization tell us about the dynamic.
-  \textbf{Missing data can be found easily}.
+  Ordinal is type of ordered data defined by range. For example: Small
+  and large.
 \item
-  \emph{Scientific Visualization}: Based on scientific or simulation
-  data. This visualization could be very complex in the variefty of
-  dimension, such us size of data, computation, etc. \textbf{Missing
-  data should be handle}.
+  Quantitative is type of ordered data defined by step. For example: 1,
+  2, 3, 4, ...
 \item
-  \emph{Information Visualization}: Transform abstract data into more
-  concreate visualization such as geometrical visualization, so we can
-  easily interpreate the important information from the data.
+  Nominal is type of unordered data defined by label. For example:
+  Shapes (circle / rectangle) and gender (male / female).
 \item
-  \emph{Domain Specific Visualization}: Simply targetting specific
-  purpose, such as bussiness, education, medical, etc.
+  Category is type of unordered data defined by group. For example:
+  Social ages (young / old) and nationality.
 \end{enumerate}
 
-    \subsection{Modes of Visualization}\label{modes-of-visualization}
+There are two types of continous data:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \emph{Interactive Visualization}: Used to do discovery. Need user
-  input. Prototype representation.
+  Fields is type of ordered data defined by standarized scale. For
+  example: Temperature data may defined by Celcius or Kelvin and
+  altitude data may defined by minute or degree.
 \item
-  \emph{Presentation Visualization}:Used to do communication. Does not
-  support user input. Fixed representation.
-\item
-  \emph{Story Telling Visualization}: Mix of interactive and
-  presentation visualization. Ex: Presentation via interactive webpage.
+  Cyclic values is type of unordered data defined by perception. For
+  example: Direction data may indicate by north, south, east, and west
+  or clock.
 \end{enumerate}
 
-    \subsection{2-D Graphics}\label{d-graphics}
+An image below describes briefly each type of data with a good example:
 
-Recall from the basic of computer graphics: 2-D in computer graphipcs is
-all about \textbf{Rasterization}. The graphics representation that
-commonly used is \textbf{Vector Graphic}. Recall from basic geometry, we
-can do scaling to visualize our data into a smooth line. For example in,
-range of {[}1, 1{]}, we can plot a 10 data points where each data is
-fraction of 10 (0, 1/10, 2/10, ..., 10/10). Although the vector graphics
-is widely used in practical visualization, when its come to computer we
-need to transform it onto raster graphics. \textbf{Raster graphic} is
-graphical representation by set of pixel in computer screen. Scaling in
-vector graphics might equalialence to pixel aliasing.
+\begin{figure}
+\centering
+\includegraphics{images/data-type.png}
+\caption{data\_type}
+\end{figure}
 
-    \subsection{3-D Graphics}\label{d-graphics}
+    \subsection{Data as Variable}\label{data-as-variable}
 
-3-D graphics is essential in computer graphics processing. To represent
-a 3-D graphics, a computer need to do \textbf{3-D Graphics Pipeline}
-which is consisted by three ordered processing: Vertex processing,
-rasterization, and pixel processing. Before vertex processing, we
-already have an object contructed by triangles. In the vertex
-processing, we transform each triangle into a canvas. In the
-rasterization, we transform each outline into pixel. In pixel
-processing, we implement such algorithm to guess color for each pixel
-inside outline.
-
-    \subsection{Photorealism}\label{photorealism}
-
-This technique implement how human eyes make a perception about the
-object. Main objective of photorealism is make 3-D graphics perception
-from 2-D graphics. Some useful technique are: Occlusion, shadowing,
-illumination, perspective, and stereo. Occlusion is the strongest depth
-cue. Shadowing is occlusion of a light source. Illumination reveal
-surface orientation. Perspective can reveal different scales of
-visualization in addition to aiding depth perception. Stereo is useful
-when other cues are unavailable.
-
-    \subsection{Non-Photorealism}\label{non-photorealism}
-
-This technique contrast with photorealism. While photorealism focus on
-physic of light, non-photorealism focus on physiology of light. The main
-goal of non-photorealism is to reveal hidden information or find detail
-information from an object. For example: A realistic 3d object of hearth
-might be hide some details because some parts covered by blood, shadow,
-or placed in another direction. To reveal hidden information from the
-graphic of heart, an artist transform dark color into more lighter
-color, controling color variation, reveal hidden part and make outline
-stronger.
-
-    \subsection{The Human}\label{the-human}
-
-To simplify how we should interpret how human perception work, we can
-use simple model that correlate mechanical processing model such as
-cellphone model into biological model as human being.
-
-The image below is simplification model of a cellphone. The brief
-explanation about this image is all input will be processed in CPU.
-There are two input type: memory and external input. Cache used to make
-memory processing from RAM became faster. Furthermore, we need such time
-delay to randomly accessing memory and another time to caching it.
-External memory included audio and video that both of them need such
-buffer time to packaging information into media processor. A CPU will
-process any input from both source to deliver data into output
-processor.
-
-We can used our cellphone model to make human model perception. CPU
-became a cognitive processor, cache is working memory, RAM is long term
-memory, media processor as perceptual processor, and output processor as
-motor processor. Each of this elements has time delay to deliver data or
-information.
-
-Recall from scheduling problem and its algorithm, we can formalize
-overal time needed to do fully working human in human processor model.
-The formal equation to calculate overall time processing called as
-\textbf{Fitt's Law} and will be looked as below:
-
-\[T \approx a + b * log_2\,\Big(1 + {D\over S}\Big)\]
-
-Recall from basic statistical analysis, \emph{a} is preprocessing time
-(time needed for use to preparing anything needed) and \emph{b} is ideal
-processing time. An implimentation of fitt's law in human processor
-model illustrated in image below:
-
-    \subsection{Memory}\label{memory}
-
-Recall from basic of neurology, we can illustrated how information from
-external source recieved and then stored in the long term memory.
-
-    \subsubsection{Sensory Memory}\label{sensory-memory}
-
-Sensory memory related to any input that can be used in perceptual
-processing, they are: * Iconic memory: Represent visual input which
-persistance in about 0.5 seconds * Echoic memory: Represent audio input
-which persistance in about 1.5 seconds * Haptic memory: Represent
-physical input such as touch. * Arousal: Represent priority of data
-representation, or in another word represent level of interest or need
-for each specific input.
-
-    \subsubsection{Working Memory}\label{working-memory}
-
-Human's working memory can be represented as DRAM in computer model.
-Recall from study on neuorology, our working memory space limited to
-only \textbf{about 2 - 7 chunks}, access time approximately in
-\textbf{70ms}, refresh time in about \textbf{200ms}, and recently input
-always is the beast (\textbf{Receny effect}).
-
-    \subsubsection{Long Term Memory}\label{long-term-memory}
-
-There are two types of long term memories:
+There are two type of data as variable:
 
 \begin{itemize}
 \tightlist
 \item
-  Episodic: Represent events that already happen or happened long time
-  ago. This type of memory organized temporally.
+  Independent variable is variable which desribed by itself and not
+  changed when another value changed.
 \item
-  Semantics: Represents facts that have been happened and need ceratin
-  preprocessing to extract reasonable information based on logical or
-  empirical reasioning. This type of memory organized associatively.
+  Dependent variable is variable which described by another variable.
+  For example, y as dependent variable and x as independent variable,
+  then value of y is defined by change of x values.
 \end{itemize}
 
-One of long term memory above can be represented as:
+An image below describes briefly how data looked in three points of
+views: science, database, and data warehouse.
+
+\begin{figure}
+\centering
+\includegraphics{images/data-variable.png}
+\caption{data\_variables}
+\end{figure}
+
+    \subsection{Mapping}\label{mapping}
+
+As explained in the mapping layer, the mapping process mainly focused on
+produce proper geometry primitive to the corresponding data channel. It
+is very important to know which best geometry to represent correspondent
+data. Failure in deciding best-suited geometry lead to bad perception
+that will influence the quality of interpretation and conclusion.
+
+There are three group of geometry primitives classified by its
+dimensions: 1. 1 dimension * Position * Length
+\includegraphics{images/position-length.png} * Angle/Slope
+\includegraphics{images/angle.png} 2. 2 dimension * Area
+\includegraphics{images/area.png} * Texture * Connection * Containtment
+\includegraphics{images/texture-connection-containtment.png} * Shape 3.
+3 dimension * Volume * Color/Density
+\includegraphics{images/volume-density.png} * Saturation * Hue
+
+Below are three list of suited geometry primitives for three commonly
+used data types (quantitative, ordinal, and nominal) ordered by
+\textbf{perceptual accuary}.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+quantitative & ordinal & nominal\tabularnewline
+\midrule
+\endhead
+position & position & position\tabularnewline
+length & density & hue\tabularnewline
+angle & saturation & texture\tabularnewline
+slope & hue & connection\tabularnewline
+area & texture & containtment\tabularnewline
+volume & connection & density\tabularnewline
+density & containtment & saturation\tabularnewline
+saturation & length & shape\tabularnewline
+hue & angle & length\tabularnewline
+& slope & angle\tabularnewline
+& area & slope\tabularnewline
+& volume & area\tabularnewline
+& & volume\tabularnewline
+\bottomrule
+\end{longtable}
+
+    \subsection{Charts}\label{charts}
+
+Data visualization often consist very simple charts, but the success of
+data visualization can often depend on how we map our data to the
+elements of those charts. Here we discuss some of the simple charts and
+describe when we use each of them.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Bar chart \includegraphics{images/bar.png} 
+\item
+  Line chart \includegraphics{images/line.png} 
+\item
+  Scatterplot \includegraphics{images/scatter.png}\\
+\item
+  Gantt chart \includegraphics{images/gantt.png}\\
+\item
+  Table \includegraphics{images/table.png}
+\end{enumerate}
+
+We can classify each type of chart by its characteristics:
+
+\begin{figure}
+\centering
+\includegraphics{images/when-use-charts.png}
+\caption{when-use-charts}
+\end{figure}
+
+    \subsection{Glyphs}\label{glyphs}
+
+Glyphs is any indicators that may encoded as shapes and colors to
+represent each kind of data point. For example, to represent a tornado
+presentation, we may used length and angle to indicate wind speed and
+direction. We may also used hue and shape to indicate density and
+coverage such as wind convergence or disvergence is such area. An image
+below illustrated use of glyphs in various charts:
+
+\begin{figure}
+\centering
+\includegraphics{images/glyphs-in-charts.png}
+\caption{glyphs}
+\end{figure}
+
+Furthermore, we can use glyphs to show data attributes in the charts or
+other visualization. A very common practical example of using glyphs is
+visualizing standart deviation and variances in sample data as shown in
+image below:
+
+\begin{figure}
+\centering
+\includegraphics{images/glyphs-standart-deviation.png}
+\caption{standart deviation}
+\end{figure}
+
+Glyphs can be used in presentation visualization. Heatmap is an example
+presentation which used colorized glyphs on the map. Different group or
+individual might be not comfort with the Heatmap representation and
+demand for higher accuracy. We can used colorized glyphs as boxes with
+various hues in the table visualization. The y and x axes on the table
+chart discribe data variables and the glyphs help us to show the
+differences between data point.
+
+\begin{figure}
+\centering
+\includegraphics{images/heatmap.png}
+\caption{Heatmap}
+\end{figure}
+
+In some case, we might want to transform our visualization into more
+compact form. We may lost some details and accuary due transformation
+into compact form. For example, we may unable to plot detailed graph in
+each class of data due limited space. In that case, we doing a trade off
+between accuary and classification. An image below show that we can use
+glyphs to show differences of life ratio between continent with few
+detail about value of life ratio in each class.
+
+\begin{figure}
+\centering
+\includegraphics{images/life-ratio.png}
+\caption{Life Ratio}
+\end{figure}
+
+Glyphs can also represented as features with complex geometry. An image
+below is an example of glyphs that represent facial features of lawyers
+that tells us some lawyer with bigger face may indicate that some lawyer
+have experienced im more cases:
+
+\begin{figure}
+\centering
+\includegraphics{images/chernoff-faces.png}
+\caption{Chernoff Faces}
+\end{figure}
+
+    \subsection{Parallel Coordinates}\label{parallel-coordinates}
+
+Parallel coordinates is a visualization technique to visualize
+high-dimensional data. This visualization will be very helpful since
+most of technology limited in represent high dimensional space as
+projection in two dimensional space. The main objective of this
+technique is to reveal certain data features, such as
+\textbf{collinearity} in high-dimensionality data. The main reason why
+we should used this technique is this technique can reduce visualization
+complexity due high-dimensionality of data. Below step-by-step how to
+construct parallel coordinates of n-dimensions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create two parallel lines of first two dimensions, for example x and
+  y.
+\item
+  Place each data into each parallel line based on its corresponding
+  values. For example, points A(3, 2) and B(4, 3) should be placed at
+  y(2, 3) and x(3, 4).
+\item
+  Draw a lines between two parallel lines corresponding to each data
+  points. For example, y(2, 3) and x(3, 4) should became two lines A(3
+  to 2) and B(4 to 3).
+\item
+  Remove every glyph drawn in each parallel line, so there is just lines
+  between parallel lines.
+\item
+  Create one parallel line for next dimension, repeat step 2 until each
+  dimension became a parallel line.
+\end{enumerate}
+
+The most interesting of parallel coordinate is we can easily detect the
+collinearity. As we can see: orange, yellow and green and dark green are
+colliniar in x-y plane. Below an example of parallel coordinates of four
+dimensional data:
+
+\begin{figure}
+\centering
+\includegraphics{images/parallel-coordinate.png}
+\caption{Parallel coordinate}
+\end{figure}
+
+    \subsection{Stacked Graphs}\label{stacked-graphs}
+
+Stacked graphs used when we want to represent accumulated data
+(multivariate in same axes). Below type of charts belong to stacked
+graph:
 
 \begin{itemize}
 \tightlist
 \item
-  Semantic nets which formed by graph structures.
+  Stacked bar chart
 \item
-  Frame which represent storage such as database and entries.
+  Relative stacked bar chart
 \item
-  Scripts.
+  Pie chart
+\item
+  Diverging stacked bar chart
+\item
+  Stacked line graph
+\item
+  Stacked graph layout
 \end{itemize}
 
-    \subsubsection{How We Remember?}\label{how-we-remember}
+In some cases, we need to carefully using stacked bar chart. We already
+knew that position more accurate than length in representing
+quantitative data. Since stacked bar chart utilize position and length,
+we need to prioritize position representation over length. An image
+below illustrate how order of position is important.
 
-That is about \textbf{time}: longer we spent time on specific thing,
-better we doing with it. It's about distribution of \textbf{practice
-effect}: we can good at thing by focus on wider or broad concept and
-practice what we already learn, but do not cram!. It is about the
-\textbf{meaning}: absord abstract concept will always harder than
-concreate concept. For example, explain the meaning of word singularity
-is harder than just speak a word black hole while imagining an
-illustration of how black hole working in the nature. All of that points
-can be simplify into three word: \textbf{structure, familiarity and
-concreteness}.
+\begin{figure}
+\centering
+\includegraphics{images/stacked-bar-chart1.png}
+\caption{Stacking order}
+\end{figure}
 
-    \subsubsection{How We Forget?}\label{how-we-forget}
+Stacked bar chart might be not effective to represent huge accumulated
+data. For example, in visualizing multiple stock prices within long time
+interval, the stacked graph might be not effective to visualize price
+changes. To satisfy that condition, we need to transform stacked bar
+chart into stacked graph layout.
 
-We can easily forget in logarithmically time of decay (recall from
-fitt's law). \textbf{Jost's law}, if two strong equally memories at a
-given time, then the older one is more durable. \textbf{Proactive
-inhibition} avoid new things to be learned by someone who not relaxed in
-the way it's teached. \textbf{Retroactive interference} is the mind
-blowing effect when we try to learn so many things in short time.
-\textbf{Emotion} will be caused somebody to stay the way they relaxed
-rather than try higher level way which is more challenging.
+\begin{figure}
+\centering
+\includegraphics{images/stacked-graph-layout.png}
+\caption{Stacked graph layout}
+\end{figure}
 
-    \subsubsection{Reasoning}\label{reasoning}
+In order to inspect area or distribution or testing the confidence
+interval, we may tranform stacked graph into Themeriver layout
 
-Theare three type or satge of reasoning: \textbf{Deduction},
-\textbf{Induction}, and \textbf{Abduction}. Deduction aimed to draw
-conclution based ob logic or empirical knowledge. In deduction process,
-we try to find the truth. Induction aimed to do generalization about
-what sample might tell us about the population. In induction process, we
-try to do extrapolation (prediction within continues axis) and
-interpolation (evaluation within descrete range) to infer information.
-In the induction reasoning, we may caution that correlation is not
-causation. Adbuction aimed to test our conclusion. In abduction process,
-we try to fit our model into real world simulation, so our model will be
-perfect to tell us the nature of fact. In the abduction reasoning, we
-may caution that our assumption and believe may be effected to our
-conclution, so that's why we need to reduce assumption as much as
-possible.
+\begin{figure}
+\centering
+\includegraphics{images/themeriver-layout.png}
+\caption{Themeriver Layout}
+\end{figure}
 
-    \subsubsection{The Human Retina}\label{the-human-retina}
+In order to do smoothing, if it possible to added some weight, then we
+may transfrom themeriver layout into streamgraph layout
 
-Generally, our Cornea lens trying to focusing light into Retina. There
-are two type of photoreceptors: rods and cones. Rods will processing
-illmuniation, so we can differ which is darker or lighter. Cones will
-processing color onto three separated codes: Red, Green, and Blue.
-\textbf{Our eye cosisted more rods than cones: 80 million againts 5
-million}. That's why our eyes more sensitive with chromatic or gray
-dispersion color, rather than full color. Eyes sensistiviy to color is
-more interesting subject: Green and red easier to be focused than blue.
-The ratio of color perception is \textbf{L = 31\%R + 59\%G + 10\%B}.
-This ratio tells us that we should avoid to use pure or dominant blue
-color. The fact is there are 10\% of males are color blind.
+\begin{figure}
+\centering
+\includegraphics{images/streamgraph-layout.png}
+\caption{Streamgraph layout}
+\end{figure}
 
-    \subsubsection{Perceiving Two
-Dimensions}\label{perceiving-two-dimensions}
+Then, in the case to prioritize position, we may do ordering
 
-This is important subject since our vision depend on how our brain
-perceiving about the information given by perceptual processor. For
-example, in the context of size, our brain might perceiveing two
-identical ball have different size if one surronded smaller ball while
-another ball surronded by bigger ball.
-\includegraphics{images/size_context.png} In the context of color, two
-identical color may seems one darker than another depends on any
-surrounding colors. \includegraphics{images/color_context.png}
+\begin{figure}
+\centering
+\includegraphics{images/streamgraph-ordering.png}
+\caption{Streamgraph ordering}
+\end{figure}
 
-So, that is important to be consistence to choose specific context in
-data visualization.
+    \subsection{Tufte's Design Rules and Using
+Color}\label{tuftes-design-rules-and-using-color}
 
-    \subsubsection{Perceiving Perspective}\label{perceiving-perspective}
+Tufte's Design Rule is one design criteria invented by
+\href{https://www.edwardtufte.com/tufte/}{Edward Tufte} which encourage
+us to be minimalism in order to visualizing data.
 
-Recall from section before, we can used perspective to represent 3-D
-visualization on 2-D dimension object. We can used
-\textbf{Foreshortening} to represent various depth of 3-D cube. We can
-used \textbf{Linear Perspective} to represent object that far away
-became smaller. \textbf{Size Constancy} give perception that smaller
-object look farther away.
+    \subsubsection{Tufte's Design Rules}\label{tuftes-design-rules}
 
-Our perception as explained before will lead us to assume that smaller
-object should be farther away. So in data visualization, we need to
-avoid 3-D representation as we can, and only used it if necessary.
+There are some important design rule described by Tufte:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Let's data speak: In order to provide reliable data, we must be
+  represent the detail of data while guide the audience how to
+  interprete data. For example: If there are some missing data, then
+  show them with less distraction as possible and making the
+  visualization to make audience rely on reasoning to guess how missing
+  data should be.
+\item
+  Try to represent picture as information rather than text: Picture is
+  great way to represent data because it has volume, area or length to
+  indicate size, color to indicate differentiation and more. By using
+  color, we can avoid miss-interpretaion.
+\item
+  Give annotation: By giving annotation in the data visualization, we
+  can inform audience about the detail and supplement information.
+\item
+  Chart junk: 2D representation may be boring, but 3D representation may
+  lead miss-perception.
+\item
+  The Data-Ink Ratio: When it come to print in the paper, it is good
+  idea to follow Tufte's minimalism which try to reduce color as much as
+  possible.
+\item
+  Micro/macro: When it came into detail, we prefer to see micro scales.
+  But when it came it the overview, we prefer to see macro scales.
+\item
+  Information layer: We need to inform audience about any information
+  that can be exploited from visualization. For example: We may need to
+  create different appearance as different elements such as color and
+  shapes.
+\item
+  Multiple: We need to stay consistent in order to represent some data
+  in different cases. For example: We need to stay with exactly same
+  chart and glyphs type when represent same measurement method on two
+  different machince performance.
+\item
+  Color: Beware with color combination in visualization because wrong
+  color combination may lead miss-interpretation and miss-perception.
+\item
+  Narrative: A good quality visualization is one that can tells audience
+  a story.
+\end{enumerate}
+
+    \subsubsection{Using Color}\label{using-color}
+
+\emph{Hue} is defined by angle of color wheel, for example: \(0^0\) is
+red, \(60^0\) is yellow, \(120^0\) is green, \(180^0\) is cyan,
+\(240^0\) is blue, and \(300^0\) is magenta. \emph{Saturation} is
+defined by how far a color from gray. \emph{Value} is defined by how far
+a color from black.
+
+Some researches reveal that human can only differentiate between only
+five to ten hues (Healy, 1996) and there are only twelve colors (6+6)
+recommended by Ward's "Information Visualization".
+
+\includegraphics{images/12-colors.png}
+
+In most cases, saturation means giving more details on the object. So
+try to add saturated colors for points, strokes, and symbols and add
+desaturated colors for bigger or fills larger areas, for example:
+desaturated with white to increase luminance. In specific case, such as
+plotting bar chart, desaturated color and fills may be better than
+saturated colors and fiils.
+
+\emph{Contrast} means differences while in the context of color, it's
+deals with hue and optionally for brightness.
 
 
     % Add a bibliography block to the postdoc
