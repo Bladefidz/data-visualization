@@ -1,0 +1,12 @@
+## Explanation
+
+This is a graph visualization representing the most commonly occurring adjectives and nouns in the novel David Copperfield by Charles Dickens. The nodes are both adjectives and nouns, and the edges connect words that appear in an adjacent position in a book. Hovering over any node brings up the data associated with that node.
+
+The size of the node is determined by the number of edges it has, and the positions are determined by a force-directed layout algorithm.
+
+
+## Sample Comments from Instructor:
+
+Even though there are many edge overlaps, this is a large non-planar graph. The items are well distributed and the edges are easy to follow visually through the overlaps.
+
+The frequency of words is nicely mapped to the area. The colors are assigned randomly. While the random colors help differentiate the nodes, there is no differentiation between adjectives and nouns, and so the visualization misses the opportunity to easily incorporate this dimension in its use of color at the nodes.
