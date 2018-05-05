@@ -1,0 +1,23 @@
+For this assignment I chose a large data set from the Stanford Online Review for Fine Food Reviews. There are 568,454 food reviews. To facilitate the data analysis I downloaded and unzipped the finefood.txt.gz file and wrote a small Python program to put the review into CSV file format table representation where each review provided data for the following columns:
+
+Product ID
+
+Review User ID
+
+Review Profile Name
+
+Review Helpfulness
+
+Review Score
+
+Review Time
+
+Review Summary
+
+Review Text
+
+Next the data was loaded into Tableau and analyzed several different ways using Product ID, Review User ID, Review Score.  I did have Tableau optimize the data due to the large volume. The final graph is 74,259 products. The data relationship that stood out Review Scores by Product ID. In this visualization you can see which products have the highest review score sum using a tree map. The model uses:
+
+Color (density) – products by review score summation, where the darkest color has the highest review score and the lightest has the least.
+
+Area (size) – product by review score summation, where larger areas represent higher score, smaller lower scores

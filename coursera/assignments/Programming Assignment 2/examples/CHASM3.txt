@@ -1,0 +1,5 @@
+This word cloud displays the most common words found in the book "Crossing the Chasm" by Geoffrey Moore.
+
+Only the size of the each word represents the frequency of which the words appeared in the book. The larger the size of the word, the more frequently it was used in the book. Bold font and all capital letters were used for easy reading. Common English words (such as "that" and "is") were removed. (The colors are generated randomly by default and could not be specified by each individual word, otherwise I would at least separate them by nouns, verbs, adjectives, etc.)
+
+This word cloud gives the audience a rough indication of what the book is about.
